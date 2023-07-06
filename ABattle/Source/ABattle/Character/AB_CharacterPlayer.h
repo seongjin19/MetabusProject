@@ -13,5 +13,13 @@ UCLASS()
 class ABATTLE_API AAB_CharacterPlayer : public AAB_CharacterBase
 {
 	GENERATED_BODY()
+public:
+	AAB_CharacterPlayer();
 	
+protected:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
+	TObjectPtr<class USpringArmComponent> CameraBoom;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
+	TObjectPtr<class UCameraComponent> Camera;
 };
