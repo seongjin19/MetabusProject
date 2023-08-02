@@ -6,6 +6,13 @@
 #include "GameFramework/Character.h"
 #include "AB_CharacterBase.generated.h"
 
+UENUM()
+enum class ECharactorControlType : uint8
+{
+	Sholder,
+	Quater
+};
+
 UCLASS()
 class ABATTLE_API AAB_CharacterBase : public ACharacter
 {
@@ -26,4 +33,9 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+protected:
+	UPROPERTY(EditAnywhere, Category = CharacterControl, Meta = (AllowPrivateaccess = "true"))
+	TMap<ECharactorControlType, class UABCharacterControlDataAsset*> CharacterControlManager;
+
+	virtual void SetCharacterControlData(const UABCharacterControlDataAsset* CharacterControlData);
 };
